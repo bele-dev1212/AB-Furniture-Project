@@ -420,5 +420,85 @@
             
             collectionModal.style.display = "block";
         }
+        // Payment Method Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Handle payment method selection
+    const paymentOptions = document.querySelectorAll('.payment-option');
+    paymentOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            paymentOptions.forEach(opt => opt.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Hide all payment details first
+            document.querySelectorAll('.payment-details').forEach(detail => {
+                detail.style.display = 'none';
+            });
+            
+            // Show the selected payment details if available
+            const details = this.nextElementSibling;
+            if(details && details.classList.contains('payment-details')) {
+                details.style.display = 'block';
+            }
+        });
+    });
+
+    // Modify your existing checkout form to include payment
+    const checkoutForm = document.getElementById('checkoutForm');
+    if(checkoutForm) {
+        checkoutForm.innerHTML = `
+            <h3>Shipping Information</h3>
+            <input type="text" placeholder="Full Name" required>
+            <input type="email" placeholder="Email" required>
+            <input type="text" placeholder="Shipping Address" required>
+            
+            <div class="payment-methods">
+                <h3 class="payment-title">Payment Method</h3>
+                <div class="payment-options">
+                    <div class="payment-option active">
+                        <input type="radio" name="payment" id="creditCard" checked>
+                        <img src="https://cdn-icons-png.flaticon.com/512/196/196578.png" alt="Credit Card" class="payment-icon">
+                        <label for="creditCard">Credit Card</label>
+                    </div>
+                    <div class="payment-details">
+                        <div class="card-elements">
+                            <div class="form-group">
+                                <label for="cardNumber">Card Number</label>
+                                <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cardName">Name on Card</label>
+                                <input type="text" id="cardName" placeholder="John Doe" required>
+                            </div>
+                            <div class="card-row">
+                                <div class="form-group">
+                                    <label for="expiryDate">Expiry Date</label>
+                                    <input type="text" id="expiryDate" placeholder="MM/YY" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cvv">CVV</label>
+                                    <input type="text" id="cvv" placeholder="123" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="payment-option">
+                        <input type="radio" name="payment" id="paypal">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2504/2504806.png" alt="PayPal" class="payment-icon">
+                        <label for="paypal">PayPal</label>
+                    </div>
+                    
+                    <div class="payment-option">
+                        <input type="radio" name="payment" id="bankTransfer">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2489/2489755.png" alt="Bank Transfer" class="payment-icon">
+                        <label for="bankTransfer">Bank Transfer</label>
+                    </div>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn">Place Order</button>
+        `;
+    }
+});
       
         document.addEventListener('DOMContentLoaded', init);

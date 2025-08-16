@@ -253,7 +253,91 @@
             margin-bottom: 10px;
             color: var(--primary);
         }
+        /* Payment Method Styles */
+.payment-methods {
+    margin: 20px 0;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
 
+.payment-title {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.payment-option {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.payment-option:hover {
+    border-color: #8b5a2b;
+}
+
+.payment-option input {
+    margin-right: 10px;
+}
+
+.payment-icon {
+    width: 40px;
+    margin-right: 10px;
+}
+
+.payment-details {
+    display: none;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.payment-option.active + .payment-details {
+    display: block;
+}
+
+.card-elements {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card-row {
+    display: flex;
+    gap: 10px;
+}
+
+.card-row .form-group {
+    flex: 1;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
        
         .products {
             display: grid;
